@@ -13,5 +13,12 @@ ENV HOME=/${WORKDIR} \
 
 WORKDIR ${HOME}
 
+COPY package*.json ./
+RUN yarn install
+
+COPY . ./
+
+RUN yarn run build
+
 # EXPOSE <ポート番号> = コンテナ公開用のポート番号を指定します。
 # EXPOSE ${CONTAINER_PORT}
