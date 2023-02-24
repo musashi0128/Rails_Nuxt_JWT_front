@@ -47,6 +47,11 @@ export default {
     '@nuxtjs/i18n'
   ],
 
+  // .envから呼び出して使う場合の処理(変数名)を記載
+  publicRuntimeConfig: {
+    appName: process.env.APP_NAME
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // 環境変数API_URLが優先されるのでコメントアウト
