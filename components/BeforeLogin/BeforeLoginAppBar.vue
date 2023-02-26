@@ -26,7 +26,7 @@
   export default {
     data ({ $store }) {
       return {
-        homeAppBarHeight: $store.state.styles.beforeLogin.homeAppBarHeight
+        homeAppBarHeight: $store.state.styles.homeAppBarHeight
       }
     }
   }
