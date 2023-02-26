@@ -9,11 +9,9 @@
     <app-logo
       @click.native="$vuetify.goTo('#scroll-top')"
     />
-    <v-toolbar-title
+    <app-title
       class="hidden-mobile-and-down"
-    >
-      {{ appName }}
-    </v-toolbar-title>
+    />
 
     <v-spacer />
 
@@ -77,11 +75,9 @@ export default {
       default: 0,
     }
   },
-  // $confgi: で.envの値を使うnuxt.configから変数を取得できる。
   // $storeでstoreに記載した変数やメソッドを取得できる
-  data ({ $config: { appName }, $store }) {
+  data ({ $store }) {
     return {
-      appName,
       scrollY: 0,
       homeAppBarHeight: $store.state.styles.homeAppBarHeight
     }
