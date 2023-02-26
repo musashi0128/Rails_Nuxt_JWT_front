@@ -64,6 +64,13 @@ export default {
     // Doc: https://vuetifyjs.com/ja/customization/a-la-carte/
     treeShake: true,
     customVariables: ['~/assets/sass/variables.scss'],
+    theme: {
+      themes: {
+        light: {
+          appblue: '1867C0'
+        }
+      }
+    },
   //   theme: {
   //     themes: {
   //       light: {
