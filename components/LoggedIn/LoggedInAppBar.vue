@@ -1,24 +1,20 @@
 <template>
   <v-app-bar
     app
-    :height="homeAppBarHeight"
+    dense
+    elevation="1"
+    clipped-left
     color="white"
   >
     <nuxt-link
-      to="/"
+      :to="redirectPath"
       class="text-decoration-none"
     >
       <app-logo />
     </nuxt-link>
-
-    <app-title
-      class="hidden-mobile-and-down"
-    />
-
+    <app-title />
     <v-spacer />
-
-    <before-login-app-bar-signup-button />
-    <before-login-app-bar-login-button />
+    <logged-in-app-bar-account-menu />
   </v-app-bar>
 </template>
 
@@ -26,8 +22,10 @@
   export default {
     data ({ $store }) {
       return {
-        homeAppBarHeight: $store.state.styles.homeAppBarHeight
+        redirectPath: $store.state.loggedIn.redirectPath
       }
     }
   }
 </script>
+<style lang="css" scoped>
+</style>
