@@ -4,6 +4,7 @@
       #user-form-card-content
     >
       <v-form
+        ref="form"
         v-model="isValid"
       >
         <user-form-name
@@ -11,23 +12,24 @@
         />
         <user-form-email
           :email.sync="params.user.email"
+          placeholder
         />
         <user-form-password
           :password.sync="params.user.password"
+          set-validation
         />
         <v-btn
-          :disabled="!isValid"
+          :disabled="!isValid || loading"
+          :loading="loading"
           block
           dark
           color="appblue"
           class="white--text"
+          @click="signup"
         >
           登録する
         </v-btn>
       </v-form>
-      <v-card-text>
-        {{ params }}
-      </v-card-text>
     </template>
   </user-form-card>
 </template>
@@ -38,8 +40,24 @@
     data () {
       return {
         isValid: false,
+        loading: false,
         params: { user: { name: '', email: '', password: '' }}
       }
     },
+    methods: {
+      signup () {
+        this.loading = true
+        setTimeout(() => {
+          this.formReset()
+          this.loading = false
+        }, 1500)
+      },
+      formReset () {
+        this.$refs.form.reset()
+        for (const key in this.params.user) {
+          this.params.user[key] = ''
+        }
+      }
+    }
   }
 </script>

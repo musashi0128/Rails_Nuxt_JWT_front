@@ -67,22 +67,15 @@ export default {
     theme: {
       themes: {
         light: {
-          appblue: '1867C0'
+          appblue: '1867C0',
+          primary: '4080BE',
+          info: '4FC1E9',
+          warning: 'FEB65E',
+          error: 'FB8678',
+          background: 'f6f6f4'
         }
       }
-    },
-  //   theme: {
-  //     themes: {
-  //       light: {
-  //         primary: '4080BE',
-  //         info: '4FC1E9',
-  //         success: '44D69E',
-  //         warning: 'FEB65E',
-  //         error: 'FB8678',
-  //         background: 'f6f6f4'
-  //       }
-  //     }
-  //   }
+    }
   },
 
   // Doc: https://nuxt-community.github.io/nuxt-i18n/basic-usage.html#nuxt-link
