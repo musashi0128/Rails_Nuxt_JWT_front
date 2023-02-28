@@ -1,6 +1,5 @@
 <template>
   <v-container>
-    project.vue
     <nuxt-child />
   </v-container>
 </template>
@@ -9,8 +8,8 @@
   export default {
     layout: 'project',
     // falseを返すページのアクセスを制限する => OK:/project/{id}     NG:/project
-    validate ({ route}) {
-      return route.name !== 'project'
+    validate ({ store, route}) {
+      return !!store.state.project.current && route.name !== 'project'
     }
   }
 </script>

@@ -1,5 +1,9 @@
+// {storeの流れ}
+  // 1.actionsで行いたい処理を行う -> 2.mutationsでstateの値を変更する -> 3.view側にデータを返却する
 const homePath = 'projects'
 
+// state => storeで設定する変数
+// 使い方 => store.state.データ名(styles/loggedIn....)
 export const state = () =>  ({
   styles : {
     homeAppBarHeight: 56
@@ -21,11 +25,28 @@ export const state = () =>  ({
   }
 })
 
-// アプリ全体の算出プロパティ -> computed
+// アプリ全体の算出プロパティ -> store内のcomputed
+// 使い方 => store.getters.プロパティ名()
 export const getters = {}
 
-// stateの値を変更する場所 ->
-export const mutations =  {}
+// stateの値を変更する場所 -> store内のstateはmutationsでしか変更できない
+// 使い方 => store.commit.(mutation名,新しい値)
+export const mutations =  {
+  setCurrentProject (state, payload) {
+    state.project.current =  payload;
+  }
+}
 
-// アプリ全体のメソッド -> method
-export const actions = {}
+// アプリ全体のメソッド -> methodでデータ加工や非同期処理を行い、結果をmutationsに渡す
+// 使い方 => store.dispatch.(action,引数)
+// { state / getters / commit / dispatch / rootState / rootGetters }
+// rootState =>  (store/index.js)のstateを取得すること -> (rootState=state)
+export const actions = {
+  getCurrentProject ({ state, commit }, params) {
+    const id = Number(params.id);
+    const currentProject =
+      state.project.list.find(project => project.id === id) || null;
+
+    commit('setCurrentProject', currentProject);
+  }
+}
