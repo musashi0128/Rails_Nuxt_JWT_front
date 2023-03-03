@@ -13,8 +13,17 @@
     >
       <app-logo />
     </nuxt-link>
-    <app-title />
+    <app-title
+      :class="{ 'hidden-mobile-and-down' : isNotHomePath }"
+    />
+
+    <!-- page title -->
+    <logged-in-app-bar-breadcrumbs
+      v-if="isNotHomePath"
+    />
+
     <v-spacer />
+    <!-- accout menu -->
     <logged-in-app-bar-account-menu />
   </v-app-bar>
 </template>
@@ -31,8 +40,11 @@
       return {
         homePath: $store.state.loggedIn.homePath
       }
+    },
+    computed : {
+      isNotHomePath () {
+        return this.$route.name !== this.homePath.name
+      }
     }
   }
 </script>
-<style lang="css" scoped>
-</style>

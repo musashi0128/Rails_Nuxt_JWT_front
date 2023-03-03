@@ -19,6 +19,13 @@ export default {
     ]
   },
 
+  // ホットリロードの有効化
+  watchers: {
+    webpack: {
+      poll: true
+    }
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/sass/main.scss'
